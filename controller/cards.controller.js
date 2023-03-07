@@ -73,8 +73,11 @@ module.exports = new CardsController()
 
 const S3 = require('aws-sdk/clients/s3')
 const file = 'cards.csv'
+const objectKey = 'objectkey'
+const copyObjectKey = 'objectkeycopy'
 const bucketParams = { Bucket: process.env.S3_BUCKET }
 const uploadParams = { Bucket: bucketParams.Bucket, Key: '', Body: '' }
+const copyParams = { Bucket: bucketParams.Bucket, CopySource: `${bucketParams.Bucket}/${objectKey}`, Key: copyObjectKey }
 
 console.log('Создание клиента')
 const s3 = new S3({
@@ -100,6 +103,13 @@ const runTest = async () => {
 		uploadParams.Key = path.basename(file)
 
 		const res = await s3.upload(uploadParams).promise()
+		console.log('Success', res)
+	} catch (e) {
+		console.log('Error', e)
+	}
+	try {
+		console.log('Копирование объекта')
+		const res = await s3.copyObject(copyParams).promise()
 		console.log('Success', res)
 	} catch (e) {
 		console.log('Error', e)
