@@ -1,5 +1,6 @@
 const db = require("../db")
 const createCsvWriter = require(`csv-writer`).createObjectCsvWriter;
+const fs = require("fs");
 const cities = [
 	{name:'Сочи', num:'231'},
 	{name:'Адлер', num:'232'},
@@ -65,19 +66,25 @@ class CardsController{
 		});
 		csvWriter.writeRecords(data)
 			.then(() => {
-				console.log(`Done`);
+				console.log(`File Create`);
+
+			});
+			fs.unlink("cards.csv", function (err) {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log("File Delete");
+				}
 			});
 	}
 }
 module.exports = new CardsController()
 
 const S3 = require('aws-sdk/clients/s3')
+const path = require("path");
 const file = 'cards.csv'
-const objectKey = 'objectkey'
-const copyObjectKey = 'objectkeycopy'
 const bucketParams = { Bucket: process.env.S3_BUCKET }
 const uploadParams = { Bucket: bucketParams.Bucket, Key: '', Body: '' }
-const copyParams = { Bucket: bucketParams.Bucket, CopySource: `${bucketParams.Bucket}/${objectKey}`, Key: copyObjectKey }
 
 console.log('Создание клиента')
 const s3 = new S3({
@@ -107,17 +114,10 @@ const runTest = async () => {
 	} catch (e) {
 		console.log('Error', e)
 	}
-	try {
-		console.log('Копирование объекта')
-		const res = await s3.copyObject(copyParams).promise()
-		console.log('Success', res)
-	} catch (e) {
-		console.log('Error', e)
-	}
 }
 runTest()
 	.then(_ => {
-		console.log('Done')
+		console.log('File Upload')
 	})
 	.catch(e => {
 		console.log('Error', e)

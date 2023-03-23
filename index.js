@@ -2,7 +2,6 @@ const express = require('express')
 require('dotenv').config();
 const cardsRouter  = require('./routes/cards.routes')
 const PORT  = process.env.PORT || 3030
-
 const app  = express()
 
 app.use(express.json())
