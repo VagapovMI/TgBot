@@ -1,0 +1,21 @@
+{
+  "name": "tgbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon tgbot.js",
+    "start": "node tgbot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1341.0",
+    "deathmoon-totp-generator": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "node-telegram-bot-api": "^0.61.0",
+    "node-telegram-operation-manager": "^1.2.0",
+    "nodemon": "^2.0.21"
+  }
+}

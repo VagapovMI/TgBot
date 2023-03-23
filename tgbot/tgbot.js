@@ -9,11 +9,7 @@ bot.on(`message`, msg => {
 
     if (text === `/start`) {
         bot.sendMessage(chatId, `Чтобы получить ссылку на скачивание файла данных: напишите Ссылка, если нужен непосредственно файл: Файл.`)
-    if (text === ``)
-        bot.sendMessage(chatId, `https://s3.timeweb.com/cd58536-mhand-bucket/cards/cards.csv`)
-        else { неверный }
     }
-
     if (text === `Ссылка`) {
         bot.sendMessage(chatId, `https://s3.timeweb.com/cd58536-mhand-bucket/cards/cards.csv`)
     }
