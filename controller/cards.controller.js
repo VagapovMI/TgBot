@@ -81,7 +81,6 @@ class CardsController{
 module.exports = new CardsController()
 
 const S3 = require('aws-sdk/clients/s3')
-const path = require("path");
 const file = 'cards.csv'
 const bucketParams = { Bucket: process.env.S3_BUCKET }
 const uploadParams = { Bucket: bucketParams.Bucket, Key: '', Body: '' }
@@ -99,7 +98,6 @@ const s3 = new S3({
 const runTest = async () => {
 	try {
 		console.log('Загрузка файла в бакет')
-
 		const fs = require('fs')
 		const fileStream = fs.createReadStream(file)
 		fileStream.on('error', function (err) {
