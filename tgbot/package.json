@@ -13,8 +13,10 @@
   "dependencies": {
     "ajax": "^0.0.4",
     "aws-sdk": "^2.1341.0",
+    "csv-parser": "^3.0.0",
     "deathmoon-totp-generator": "^1.0.1",
     "dotenv": "^16.0.3",
+    "node-csv": "^0.1.2",
     "node-telegram-bot-api": "^0.61.0",
     "node-telegram-operation-manager": "^1.2.0",
     "nodemon": "^2.0.21"

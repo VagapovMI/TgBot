@@ -69,13 +69,13 @@ class CardsController{
 				console.log(`File Create`);
 
 			});
-			fs.unlink("cards.csv", function (err) {
+		/*	 fs.unlink("cards.csv", function (err) {
 				if (err) {
 					console.log(err);
 				} else {
 					console.log("File Delete");
 				}
-			});
+			}); */
 	}
 }
 module.exports = new CardsController()
